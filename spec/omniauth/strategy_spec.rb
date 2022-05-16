@@ -973,6 +973,7 @@ describe OmniAuth::Strategy do
         let(:escaped_token) { URI.encode_www_form_component(csrf_token, Encoding::UTF_8) }
 
         it 'allows a request with matching authenticity_token' do
+          binding.b
           expect(strategy).to receive(:fail!).with('Request Phase', kind_of(StandardError))
 
           post_env = make_env('/auth/test', 'rack.session' => {:csrf => csrf_token}, 'rack.input' => StringIO.new("authenticity_token=#{escaped_token}"))
