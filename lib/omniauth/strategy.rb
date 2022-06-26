@@ -186,6 +186,7 @@ module OmniAuth
 
       @env['omniauth.strategy'] = self if on_auth_path?
 
+      binding.b
       return mock_call!(env) if OmniAuth.config.test_mode
 
       begin

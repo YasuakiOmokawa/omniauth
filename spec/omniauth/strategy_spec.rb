@@ -592,8 +592,8 @@ describe OmniAuth::Strategy do
     context 'with relative url root' do
       let(:props) { {'SCRIPT_NAME' => '/myapp'} }
       it 'accepts the request' do
-        binding.b
         expect(strategy).to receive(:fail!).with('Request Phase', kind_of(StandardError))
+        binding.b
 
         strategy.call(make_env('/auth/test', props))
         expect(strategy.request_path).to eq('/myapp/auth/test')
