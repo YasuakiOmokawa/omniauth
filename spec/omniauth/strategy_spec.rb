@@ -593,7 +593,6 @@ describe OmniAuth::Strategy do
       let(:props) { {'SCRIPT_NAME' => '/myapp'} }
       it 'accepts the request' do
         expect(strategy).to receive(:fail!).with('Request Phase', kind_of(StandardError))
-        binding.b
 
         strategy.call(make_env('/auth/test', props))
         expect(strategy.request_path).to eq('/myapp/auth/test')
@@ -602,6 +601,7 @@ describe OmniAuth::Strategy do
       it 'accepts the callback' do
         expect(strategy).to receive(:fail!).with('Callback Phase', kind_of(StandardError))
 
+        binding.b
         strategy.call(make_env('/auth/test/callback', props))
       end
 
