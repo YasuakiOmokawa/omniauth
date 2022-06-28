@@ -601,7 +601,6 @@ describe OmniAuth::Strategy do
       it 'accepts the callback' do
         expect(strategy).to receive(:fail!).with('Callback Phase', kind_of(StandardError))
 
-        binding.b
         strategy.call(make_env('/auth/test/callback', props))
       end
 
@@ -610,6 +609,7 @@ describe OmniAuth::Strategy do
           expect(strategy).to receive(:full_host).and_return('http://example.com')
           expect(strategy).to receive(:fail!).with('Request Phase', kind_of(StandardError))
 
+          binding.b
           strategy.call(make_env('/auth/test', props))
 
           expect(strategy.callback_url).to eq('http://example.com/myapp/auth/test/callback')
