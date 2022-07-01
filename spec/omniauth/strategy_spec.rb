@@ -624,10 +624,10 @@ describe OmniAuth::Strategy do
           expect(strategy).to receive(:fail!).with('Request Phase', kind_of(StandardError))
 
           expect(strategy.request_path).to eq('/myapp/override')
-          binding.b
 
           strategy.call(make_env('/override', props))
 
+          binding.b
           expect(strategy.callback_url).to eq('http://example.com/myapp/override/callback')
         end
       end
